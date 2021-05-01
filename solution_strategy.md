@@ -35,6 +35,9 @@ The task has a clear separation between **loading** and **processing** the data.
     - Extraction of the relevant item (i.e. 'Day')
 - Optional: Formatting/Printing
 ## Design Architecture
-The 
+In order to decouple loading from processing the Architecture will contain an Interface for a DataFactory.
+For loading files I will implement a FileDataFactory. This will produce an DataSet object, which will perform the 
+computation. Both the DataSet and DataFactory may depend on pandas, but the Implementation must ensure that DataSet will 
+be instatiated with parameters, which have no such dependencies. 
 ## Implement
 TODO
