@@ -18,9 +18,16 @@ This approach will allow me to familiarize myself with the data and attempt a sp
 The scratch_attempt notebook details the solution to the first challenge (weather). The logic is incorporated in 
 `solutions/specific/weather_solution.py`.
 ## Generalize the Problem
-TODO
+The common factors of the football and weather challenges are the file format and most elements of the computation.
+The differences are the file names and the data itself.
+### The Computation
+Let A be a Matrix and i, j indicate column indices. Both tasks follow the form:
+
+MAX(A<sub>i</sub> - A<sub>j</sub>)
+
+_I would like to keep the concrete reduction function (in this case MAX) flexible_.
 ## Identify Concerns
-TODO
+
 ## Design Architecture
 TODO
 ## Implement
