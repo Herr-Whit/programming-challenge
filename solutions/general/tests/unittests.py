@@ -1,5 +1,9 @@
 from unittest import TestCase
 
+from solutions.general.src.DataFactory import FileDataFactory
+
 
 class TestFileDataFactory(TestCase):
-    pass
+    def test_initialization(self):
+        FileDataFactory()
+
