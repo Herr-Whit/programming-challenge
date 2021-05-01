@@ -27,8 +27,14 @@ MAX(A<sub>i</sub> - A<sub>j</sub>)
 
 _I would like to keep the concrete reduction function (in this case MAX) flexible_.
 ## Identify Concerns
-
+The task has a clear separation between **loading** and **processing** the data. Further separations could be made:
+- Loading (data from disk to memory)
+- Processing 
+    - Subtraction (A<sub>i</sub> - A<sub>j</sub>) 
+    - Reduction (MAX)
+    - Extraction of the relevant item (i.e. 'Day')
+- Optional: Formatting/Printing
 ## Design Architecture
-TODO
+The 
 ## Implement
 TODO
