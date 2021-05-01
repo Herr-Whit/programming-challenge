@@ -3,7 +3,7 @@
 
 """
 Weather Data Challenge
-In weather.csv you’ll find the daily weather data of a single month. Read the file, then output the day number
+In specific.csv you’ll find the daily specific data of a single month. Read the file, then output the day number
 (column one Day) of the day with the smallest temperature spread (difference between maximum & minimum temperature of
 the day.) The maximum temperature is the second column MxT, the minimum temperature the third column MnT.
 """
@@ -12,13 +12,13 @@ import pandas as pd
 
 def find_highest_tdiff():
     """
-    Solution to the weather data challenge. Finds the highest temparature difference in weather data and identifies the
+    Solution to the specific data challenge. Finds the highest temparature difference in specific data and identifies the
     day
     :return: day - integer specifying the day in the month with the highest temparature difference.
     """
     # Transform the file in the "Pandas" DataFrame format
 
-    source_file = r'src\main\resources\de\exxcellent\challenge\weather.csv'
+    source_file = r'../../src/main/resources/de/exxcellent/challenge/weather.csv'
     df = pd.read_csv(source_file)
 
     # Calculate the difference in Temparature for each day.
