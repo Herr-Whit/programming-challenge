@@ -5,5 +5,5 @@ class DataSet:
     def __init__(self, data):
         self.data = pd.DataFrame(data)
 
-    def isempty(self):
+    def is_empty(self):
         return len(self.data) == 0

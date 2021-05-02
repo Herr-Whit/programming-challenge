@@ -16,22 +16,20 @@ class TestFileDataFactory(TestCase):
 
 
 class TestDataSet(TestCase):
-    def test_initialization(self):
-        data = {
+    def setUp(self) -> None:
+        self.data = {
             'a': [1, 2, 3],
             'b': ['a', 'b', 'c']
         }
-        DataSet(data)
+
+    def test_initialization(self):
+        DataSet(self.data)
 
     def test_is_empty(self):
         data = {}
         ds = DataSet(data)
-        self.assertTrue(ds.isempty())
+        self.assertTrue(ds.is_empty())
 
     def test_is_not_empty(self):
-        data = {
-            'a': [1, 2, 3],
-            'b': ['a', 'b', 'c']
-        }
-        ds = DataSet(data)
-        self.assertFalse(ds.isempty())
+        ds = DataSet(self.data)
+        self.assertFalse(ds.is_empty())
