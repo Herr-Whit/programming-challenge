@@ -22,3 +22,8 @@ class TestDataSet(TestCase):
             'b': ['a', 'b', 'c']
         }
         DataSet(data)
+
+    def test_isempty(self):
+        data = {}
+        ds = DataSet(data)
+        self.assertTrue(ds.isempty())
