@@ -1,4 +1,4 @@
-from operator import sub
+
 from unittest import TestCase
 
 from solutions.general.src.DataFactory import FileDataFactory
@@ -35,7 +35,6 @@ class TestFileDataFactory(TestCase):
         ds = data_factory.load_data(self.test_path)
 
         self.assertEqual(self.file_data, ds.get_data())
-
 
 
 class TestDataSet(TestCase):

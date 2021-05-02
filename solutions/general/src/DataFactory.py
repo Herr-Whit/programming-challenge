@@ -1,4 +1,4 @@
-from abc import abstractmethod, abstractproperty, ABCMeta, ABC
+from abc import abstractmethod, ABC
 
 import pandas as pd
 
