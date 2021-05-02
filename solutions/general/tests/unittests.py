@@ -6,12 +6,16 @@ from solutions.general.src.DataSet import DataSet
 
 
 class TestFileDataFactory(TestCase):
+    def setUp(self) -> None:
+        self.test_path = './test_files/test_small.csv'
+        self.non_existing_path = './test_files/not_exist.csv'
+
     def test_initialization(self):
         FileDataFactory()
 
     def test_load_data_returns_DataSet(self):
         data_factory = FileDataFactory()
-        data = data_factory.load_data()
+        data = data_factory.load_data(self.test_path)
 
         self.assertIsInstance(data, DataSet)
 
