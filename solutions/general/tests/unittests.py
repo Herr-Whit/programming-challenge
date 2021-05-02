@@ -33,3 +33,16 @@ class TestDataSet(TestCase):
     def test_is_not_empty(self):
         ds = DataSet(self.data)
         self.assertFalse(ds.is_empty())
+
+    def test_get_column_names(self):
+        ds = DataSet(self.data)
+
+        column_names = ds.get_column_names()
+        self.assertEqual(['a', 'b'], column_names)
+
+    def test_create_column_from_others_fails_if_empty(self):
+        data = {}
+        ds = DataSet(data)
+
+        self.assertRaises(AssertionError, ds.create_column_from_others)
+

@@ -3,7 +3,13 @@ import pandas as pd
 
 class DataSet:
     def __init__(self, data):
-        self.data = pd.DataFrame(data)
+        self._data = pd.DataFrame(data)
 
     def is_empty(self):
-        return len(self.data) == 0
+        return len(self._data) == 0
+
+    def get_column_names(self):
+        return list(self._data.columns)
+
+    def create_column_from_others(self):
+        raise AssertionError
