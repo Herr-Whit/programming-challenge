@@ -19,6 +19,11 @@ class TestFileDataFactory(TestCase):
 
         self.assertIsInstance(data, DataSet)
 
+    def test_load_data_raises_not_found(self):
+        data_factory = FileDataFactory()
+
+        self.assertRaises(FileNotFoundError, data_factory.load_data, **{'path': self.non_existing_path})
+
 
 class TestDataSet(TestCase):
     def setUp(self) -> None:

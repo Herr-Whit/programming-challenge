@@ -1,5 +1,7 @@
 from abc import abstractmethod, abstractproperty, ABCMeta, ABC
 
+import pandas as pd
+
 from solutions.general.src.DataSet import DataSet
 
 
@@ -14,5 +16,6 @@ class FileDataFactory(DataFactory):
         pass
 
     def load_data(self, path):
+        pd.read_csv(path)
         data = {}
         return DataSet(data)
