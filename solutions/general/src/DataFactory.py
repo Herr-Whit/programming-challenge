@@ -16,6 +16,6 @@ class FileDataFactory(DataFactory):
         pass
 
     def load_data(self, path):
-        pd.read_csv(path)
-        data = {}
+        df = pd.read_csv(path)
+        data = df.to_dict(orient='list')
         return DataSet(data)

@@ -10,6 +10,11 @@ class TestFileDataFactory(TestCase):
         self.test_path = './test_files/test_small.csv'
         self.non_existing_path = './test_files/not_exist.csv'
 
+        self.file_data = {
+            'a': [1, 3, 5],
+            'b': [2, 4, 6]
+        }
+
     def test_initialization(self):
         FileDataFactory()
 
@@ -23,6 +28,14 @@ class TestFileDataFactory(TestCase):
         data_factory = FileDataFactory()
 
         self.assertRaises(FileNotFoundError, data_factory.load_data, **{'path': self.non_existing_path})
+
+    def test_load_data(self):
+        data_factory = FileDataFactory()
+
+        ds = data_factory.load_data(self.test_path)
+
+        self.assertEqual(self.file_data, ds.get_data())
+
 
 
 class TestDataSet(TestCase):
