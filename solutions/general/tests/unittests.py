@@ -23,7 +23,15 @@ class TestDataSet(TestCase):
         }
         DataSet(data)
 
-    def test_isempty(self):
+    def test_is_empty(self):
         data = {}
         ds = DataSet(data)
         self.assertTrue(ds.isempty())
+
+    def test_is_not_empty(self):
+        data = {
+            'a': [1, 2, 3],
+            'b': ['a', 'b', 'c']
+        }
+        ds = DataSet(data)
+        self.assertFalse(ds.isempty())

@@ -6,4 +6,4 @@ class DataSet:
         self.data = pd.DataFrame(data)
 
     def isempty(self):
-        return True
+        return len(self.data) == 0
