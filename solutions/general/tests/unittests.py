@@ -60,4 +60,20 @@ class TestDataSet(TestCase):
         new_data = ds.get_data()
         self.assertEqual(self.data['a'][0] - self.data['b'][0], new_data['c'][0])
 
+    def test_reduce_column_fails_if_empty(self):
+        data = {}
+        ds = DataSet(data)
+
+        self.assertRaises(AssertionError, ds.reduce_column, **{'name': '', 'reduction': None})
+
+    def test_reduce_column(self):
+        ds = DataSet(self.data)
+
+        a_max = ds.reduce_column('a', max)
+        b_sum = ds.reduce_column('b', sum)
+
+        self.assertEqual(3, a_max)
+        self.assertEqual(15, b_sum)
+
+
 
