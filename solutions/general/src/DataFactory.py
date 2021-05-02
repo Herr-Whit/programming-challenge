@@ -1,5 +1,7 @@
 from abc import abstractmethod, abstractproperty, ABCMeta, ABC
 
+from solutions.general.src.DataSet import DataSet
+
 
 class DataFactory(ABC):
     @abstractmethod
@@ -10,5 +12,6 @@ class DataFactory(ABC):
 class FileDataFactory(DataFactory):
     def __init__(self):
         pass
+
     def load_data(self):
-        pass
+        return DataSet()
