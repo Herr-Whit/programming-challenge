@@ -14,4 +14,5 @@ class FileDataFactory(DataFactory):
         pass
 
     def load_data(self):
-        return DataSet()
+        data = {}
+        return DataSet(data)
