@@ -1,3 +1,4 @@
+from operator import sub
 from unittest import TestCase
 
 from solutions.general.src.DataFactory import FileDataFactory
@@ -19,7 +20,7 @@ class TestDataSet(TestCase):
     def setUp(self) -> None:
         self.data = {
             'a': [1, 2, 3],
-            'b': ['a', 'b', 'c']
+            'b': [4, 5, 6]
         }
 
     def test_initialization(self):
@@ -40,9 +41,23 @@ class TestDataSet(TestCase):
         column_names = ds.get_column_names()
         self.assertEqual(['a', 'b'], column_names)
 
-    def test_create_column_from_others_fails_if_empty(self):
+    def test_create_difference_column_fails_if_empty(self):
         data = {}
         ds = DataSet(data)
 
-        self.assertRaises(AssertionError, ds.create_column_from_others)
+        self.assertRaises(AssertionError, ds.create_difference_column, **{'name': '', 'columns': []})
+
+    def test_get_data(self):
+        ds = DataSet(self.data)
+        self.assertEqual(self.data, ds.get_data())
+
+    def test_create_difference_column(self):
+        ds = DataSet(self.data)
+
+        ds.create_difference_column('c', ['a', 'b'])
+        column_names = ds.get_column_names()
+        self.assertEqual(['a', 'b', 'c'], column_names)
+        new_data = ds.get_data()
+        self.assertEqual(self.data['a'][0] - self.data['b'][0], new_data['c'][0])
+
 
