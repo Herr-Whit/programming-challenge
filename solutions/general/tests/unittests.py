@@ -100,12 +100,12 @@ class TestDataSet(TestCase):
         data = {}
         ds = DataSet(data)
 
-        self.assertRaises(AssertionError, ds.get_max, **{'column_name': ''})
+        self.assertRaises(AssertionError, ds.get_row_on_column_max, **{'column_name': ''})
 
-    def test_get_max(self):
+    def test_get_row_on_column_max(self):
         ds = DataSet(self.data)
 
-        max_row = ds.get_max('a')
+        max_row = ds.get_row_on_column_max('a')
 
         self.assertEqual(6, max_row['b'][0])
 
