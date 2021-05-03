@@ -1,5 +1,5 @@
 # Problem Analysis
-The tasks in question involve loading data in csv format and identifying a datapoint with the maximum difference between given columns and returning a specific value from that row. 
+The tasks in question involve loading data in csv format and identifying a datapoint with the minimum difference between given columns and returning a specific value from that row. 
 
 # Approach
 ## Scratch in Jupyter Notebook (The Data-Scientists Approach)
@@ -23,15 +23,15 @@ The differences are the file names and the data itself.
 ### The Computation
 Let A be a Matrix and i, j indicate column indices. Both tasks follow the form:
 
-MAX(A<sub>i</sub> - A<sub>j</sub>)
+MIN(A<sub>i</sub> - A<sub>j</sub>)
 
-_I would like to keep the concrete reduction function (in this case MAX) flexible_.
+_I would like to keep the concrete reduction function (in this case MIN) flexible_.
 ## Identify Concerns
 The task has a clear separation between **loading** and **processing** the data. Further separations could be made:
 - Loading (data from disk to memory)
 - Processing 
     - Subtraction (A<sub>i</sub> - A<sub>j</sub>) 
-    - Reduction (MAX)
+    - Reduction (MIN)
     - Extraction of the relevant item (i.e. 'Day')
 - Optional: Formatting/Printing
 ## Design Architecture
