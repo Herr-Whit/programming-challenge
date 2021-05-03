@@ -66,7 +66,7 @@ class TestDataSet(TestCase):
         data = {}
         ds = DataSet(data)
 
-        self.assertRaises(AssertionError, ds.create_difference_column, **{'name': '', 'columns': []})
+        self.assertRaises(AssertionError, ds.create_difference_column, **{'column_name': '', 'columns': []})
 
     def test_get_data(self):
         ds = DataSet(self.data)
@@ -85,7 +85,7 @@ class TestDataSet(TestCase):
         data = {}
         ds = DataSet(data)
 
-        self.assertRaises(AssertionError, ds.reduce_column, **{'name': '', 'reduction': None})
+        self.assertRaises(AssertionError, ds.reduce_column, **{'column_name': '', 'reduction': None})
 
     def test_reduce_column(self):
         ds = DataSet(self.data)
@@ -95,6 +95,21 @@ class TestDataSet(TestCase):
 
         self.assertEqual(3, a_max)
         self.assertEqual(15, b_sum)
+
+    def test_get_max_fails_if_empty(self):
+        data = {}
+        ds = DataSet(data)
+
+        self.assertRaises(AssertionError, ds.get_max, **{'column_name': ''})
+
+    def test_get_max(self):
+        ds = DataSet(self.data)
+
+        max_row = ds.get_max('a')
+
+        self.assertEqual(6, max_row['b'][0])
+
+
 
 
 
