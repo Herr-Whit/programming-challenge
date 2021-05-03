@@ -1,7 +1,5 @@
 from abc import abstractmethod, ABC
-
 import pandas as pd
-
 from solutions.general.src.DataSet import DataSet
 
 
@@ -16,6 +14,11 @@ class FileDataFactory(DataFactory):
         pass
 
     def load_data(self, path):
+        """
+        load data from file
+        :param path: either pathlib.Path object or string indicating a file path
+        :return: DataSet object containing the file data.
+        """
         df = pd.read_csv(path)
         data = df.to_dict(orient='list')
         return DataSet(data)

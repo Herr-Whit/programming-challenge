@@ -6,12 +6,24 @@ class DataSet:
         self._data = pd.DataFrame(data)
 
     def is_empty(self):
+        """
+        Check if the dataset is empty
+        :return: boolean indicating emptiness
+        """
         return len(self._data) == 0
 
     def get_column_names(self):
+        """
+        get the names of the columns of the datasets
+        :return: list of strings of the dataset
+        """
         return list(self._data.columns)
 
     def get_data(self):
+        """
+        get the dataset contents in native python data form
+        :return: dictionary of lists with column names as keys
+        """
         return self._data.to_dict(orient='list')
 
     def create_absolute_difference_column(self, column_name, columns):
@@ -35,7 +47,13 @@ class DataSet:
         return reduction(self._data[column_name])
 
     def get_row_on_column_reduction(self, column_name, reduction):
-        assert not (self.is_empty()), 'Cannot find maximum in an empty dataset'
+        """
+        get a row based, where the attribute matches a reduction (min/max/median) of the same column
+        :param column_name: string indicating the column in question
+        :param reduction: reduction function to
+        :return: dictionary of lists with column names as keys containing rows matching the reduction result
+        """
+        assert not (self.is_empty()), 'Cannot find row in an empty dataset'
         maximum = self.reduce_column(column_name, reduction)
         max_rows = self._data[self._data[column_name] == maximum]
         return max_rows.to_dict(orient='list')
