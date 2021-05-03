@@ -14,7 +14,7 @@ class DataSet:
     def get_data(self):
         return self._data.to_dict(orient='list')
 
-    def create_difference_column(self, column_name, columns):
+    def create_absolute_difference_column(self, column_name, columns):
         """
         extend the dataset by another column, based on existing columns
         :param column_name: str name of the new column
@@ -22,7 +22,7 @@ class DataSet:
         """
         assert not (self.is_empty()), 'Cannot create column from others in an empty dataset'
 
-        self._data[column_name] = self._data[columns[0]] - self._data[columns[1]]
+        self._data[column_name] = (self._data[columns[0]] - self._data[columns[1]]).abs()
 
     def reduce_column(self, column_name, reduction):
         """

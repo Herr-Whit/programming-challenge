@@ -66,7 +66,7 @@ class TestDataSet(TestCase):
         data = {}
         ds = DataSet(data)
 
-        self.assertRaises(AssertionError, ds.create_difference_column, **{'column_name': '', 'columns': []})
+        self.assertRaises(AssertionError, ds.create_absolute_difference_column, **{'column_name': '', 'columns': []})
 
     def test_get_data(self):
         ds = DataSet(self.data)
@@ -75,11 +75,11 @@ class TestDataSet(TestCase):
     def test_create_difference_column(self):
         ds = DataSet(self.data)
 
-        ds.create_difference_column('c', ['a', 'b'])
+        ds.create_absolute_difference_column('c', ['a', 'b'])
         column_names = ds.get_column_names()
         self.assertEqual(['a', 'b', 'c'], column_names)
         new_data = ds.get_data()
-        self.assertEqual(self.data['a'][0] - self.data['b'][0], new_data['c'][0])
+        self.assertEqual(abs(self.data['a'][0] - self.data['b'][0]), new_data['c'][0])
 
     def test_reduce_column_fails_if_empty(self):
         data = {}
