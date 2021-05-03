@@ -96,18 +96,18 @@ class TestDataSet(TestCase):
         self.assertEqual(3, a_max)
         self.assertEqual(15, b_sum)
 
-    def test_get_max_fails_if_empty(self):
+    def test_get_row_on_column_reduction_fails_if_empty(self):
         data = {}
         ds = DataSet(data)
 
-        self.assertRaises(AssertionError, ds.get_row_on_column_max, **{'column_name': ''})
+        self.assertRaises(AssertionError, ds.get_row_on_column_reduction, **{'column_name': '', 'reduction': None})
 
-    def test_get_row_on_column_max(self):
+    def test_get_row_on_column_reduction(self):
         ds = DataSet(self.data)
 
-        max_row = ds.get_row_on_column_max('a')
+        max_row = ds.get_row_on_column_reduction('a', min)
 
-        self.assertEqual(6, max_row['b'][0])
+        self.assertEqual(4, max_row['b'][0])
 
 
 

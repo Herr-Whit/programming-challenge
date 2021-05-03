@@ -34,9 +34,9 @@ class DataSet:
         assert not (self.is_empty()), 'Cannot reduce column in an empty dataset'
         return reduction(self._data[column_name])
 
-    def get_row_on_column_max(self, column_name):
+    def get_row_on_column_reduction(self, column_name, reduction):
         assert not (self.is_empty()), 'Cannot find maximum in an empty dataset'
-        maximum = self.reduce_column(column_name, max)
+        maximum = self.reduce_column(column_name, reduction)
         max_rows = self._data[self._data[column_name] == maximum]
         return max_rows.to_dict(orient='list')
 
