@@ -9,16 +9,26 @@ class DataFactory(ABC):
         pass
 
 
+def load_csv(path):
+    df = pd.read_csv(path)
+    data = df.to_dict(orient='list')
+    return data
+
+
 class FileDataFactory(DataFactory):
+    loading_collection = {
+        'csv': load_csv
+    }
+
     def __init__(self):
         pass
 
     def load_data(self, path):
         """
         load data from file
-        :param path: either pathlib.Path object or string indicating a file path
+        :param path: string indicating a file path
         :return: DataSet object containing the file data.
         """
-        df = pd.read_csv(path)
-        data = df.to_dict(orient='list')
+        file_type = path.split('.')[-1]
+        data = self.loading_collection[file_type](path)
         return DataSet(data)
