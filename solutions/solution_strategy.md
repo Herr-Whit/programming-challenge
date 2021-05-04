@@ -39,6 +39,7 @@ In order to decouple loading from processing the Architecture will contain an In
 For loading files I will implement a FileDataFactory. This will produce an DataSet object, which will perform the 
 computation. Both the DataSet and DataFactory may depend on pandas, but the Implementation must ensure that DataSet will 
 be instantiated with parameters, which have no such dependencies. 
+![UML Diagram](img/UML_diagram.png)
 ## Implementation
 I will follow test-driven development (red, green, refactor), but only commit on green and refactor for the sake of overview.
 ## Evaluation
